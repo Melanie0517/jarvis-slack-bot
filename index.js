@@ -6,7 +6,7 @@ const axios = require('axios');
 const channel = 'testbot';
 
 const bot = new SlackBot({
-    token: 'xoxb-732745749425-738661027252-V8UWHorW14qZG0oyFSUCDSVW',
+    token: TOKEN_PATH,
     name: 'Jarvis'
 });
 
@@ -185,7 +185,7 @@ function getCurrentNews() {
 
 function getHolidays() {
     bot.postMessageToChannel(channel , 'Here are the list of SG Public Holidays');
-    const url = 'https://calendarific.com/api/v2/holidays?api_key=fa3dc7c7936bb1640c3722c31d92874cfe95c489&country=SG&year=2019';
+    const url = 'https://calendarific.com/api/v2/holidays';
     axios.get(url).then(res => {
         const holidays = res.data.response.holidays;
         holidays.map((holiday, i) => {
